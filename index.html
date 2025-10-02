@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPTD SDN TAMANSAREH 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .section-hidden {
+            display: none;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold text-lg">📚</span>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-800">UPTD SDN TAMANSAREH 2</h1>
+                            <p class="text-xs text-gray-600">Sekolah Dasar Negeri</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#" class="nav-link active text-gray-800 hover:text-blue-600 px-3 py-2 text-sm font-medium" onclick="showSection('beranda')">Beranda</a>
+                        <a href="#" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium" onclick="showSection('profil')">Profil</a>
+                        <a href="#" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium" onclick="showSection('gtk')">GTK</a>
+                        <a href="#" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium" onclick="showSection('galeri')">Galeri</a>
+                        <a href="#" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium" onclick="showSection('informasi')">Informasi</a>
+                        <a href="#" class="nav-link text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium" onclick="showSection('kontak')">Kontak</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#" class="block px-3 py-2 text-gray-800 hover:text-blue-600 font-medium" onclick="showSection('beranda')">Beranda</a>
+                <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 font-medium" onclick="showSection('profil')">Profil</a>
+                <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 font-medium" onclick="showSection('gtk')">GTK</a>
+                <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 font-medium" onclick="showSection('galeri')">Galeri</a>
+                <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 font-medium" onclick="showSection('informasi')">Informasi</a>
+                <a href="#" class="block px-3 py-2 text-gray-600 hover:text-blue-600 font-medium" onclick="showSection('kontak')">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Beranda Section -->
+    <section id="beranda" class="section">
+        <!-- Hero Section -->
+        <div class="hero-gradient text-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Selamat Datang di<br>UPTD SDN TAMANSAREH 2</h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">Membentuk Generasi Cerdas, Berkarakter, dan Berakhlak Mulia</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300" onclick="showSection('profil')">Tentang Kami</button>
+                    <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300" onclick="showSection('kontak')">Hubungi Kami</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Keunggulan Sekolah Kami</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Kami berkomitmen memberikan pendidikan terbaik dengan fasilitas lengkap dan tenaga pengajar yang berkualitas</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card-hover bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-xl text-center">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">🎓</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Pendidikan Berkualitas</h3>
+                        <p class="text-gray-600">Kurikulum yang disesuaikan dengan standar nasional dan kebutuhan zaman</p>
+                    </div>
+                    <div class="card-hover bg-gradient-to-br from-green-50 to-emerald-100 p-8 rounded-xl text-center">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">👥</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Guru Berpengalaman</h3>
+                        <p class="text-gray-600">Tenaga pengajar profesional dan berpengalaman dalam mendidik anak</p>
+                    </div>
+                    <div class="card-hover bg-gradient-to-br from-purple-50 to-violet-100 p-8 rounded-xl text-center">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">🏫</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Fasilitas Lengkap</h3>
+                        <p class="text-gray-600">Ruang kelas nyaman, perpustakaan, dan fasilitas penunjang pembelajaran</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil Section -->
+    <section id="profil" class="section section-hidden">
+        <div class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Profil Sekolah</h2>
+                    <div class="w-24 h-1 bg-blue-500 mx-auto"></div>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Tentang UPTD SDN TAMANSAREH 2</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            UPTD SDN Tamansareh 2 adalah sekolah dasar negeri yang berkomitmen untuk memberikan pendidikan berkualitas tinggi kepada siswa-siswi kami. Dengan visi menjadi sekolah unggulan yang menghasilkan lulusan cerdas, berkarakter, dan berakhlak mulia.
+                        </p>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Sekolah kami dilengkapi dengan fasilitas modern dan tenaga pengajar yang profesional untuk mendukung proses pembelajaran yang optimal.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700"><strong>Visi:</strong> Menjadi sekolah unggulan yang berkarakter</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700"><strong>Misi:</strong> Memberikan pendidikan berkualitas dan berkarakter</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700"><strong>Status:</strong> Sekolah Dasar Negeri Terakreditasi</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-xl">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-6">Data Sekolah</h4>
+                        <div class="space-y-4">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">NPSN</span>
+                                <span class="font-semibold">20123456</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Status</span>
+                                <span class="font-semibold">Negeri</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Akreditasi</span>
+                                <span class="font-semibold">A</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Jumlah Siswa</span>
+                                <span class="font-semibold">245 Siswa</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Jumlah Guru</span>
+                                <span class="font-semibold">18 Guru</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GTK Section -->
+    <section id="gtk" class="section section-hidden">
+        <div class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Guru dan Tenaga Kependidikan</h2>
+                    <p class="text-gray-600">Tim profesional yang berdedikasi untuk pendidikan terbaik</p>
+                    <div class="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-hover bg-white p-6 rounded-xl shadow-sm">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-white">👨‍🏫</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">Drs. Ahmad Suryadi, M.Pd</h3>
+                        <p class="text-blue-600 text-center mb-3">Kepala Sekolah</p>
+                        <p class="text-gray-600 text-sm text-center">Pengalaman 25 tahun dalam dunia pendidikan</p>
+                    </div>
+                    
+                    <div class="card-hover bg-white p-6 rounded-xl shadow-sm">
+                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-white">👩‍🏫</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">Siti Nurhaliza, S.Pd</h3>
+                        <p class="text-green-600 text-center mb-3">Guru Kelas 1</p>
+                        <p class="text-gray-600 text-sm text-center">Spesialis pendidikan anak usia dini</p>
+                    </div>
+                    
+                    <div class="card-hover bg-white p-6 rounded-xl shadow-sm">
+                        <div class="w-20 h-20 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-white">👨‍🏫</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">Budi Santoso, S.Pd</h3>
+                        <p class="text-purple-600 text-center mb-3">Guru Olahraga</p>
+                        <p class="text-gray-600 text-sm text-center">Pelatih berprestasi tingkat kabupaten</p>
+                    </div>
+                    
+                    <div class="card-hover bg-white p-6 rounded-xl shadow-sm">
+                        <div class="w-20 h-20 bg-gradient-to-r from-red-400 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-white">👩‍🏫</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">Dewi Sartika, S.Pd</h3>
+                        <p class="text-red-600 text-center mb-3">Guru Bahasa Indonesia</p>
+                        <p class="text-gray-600 text-sm text-center">Ahli dalam pembelajaran literasi</p>
+                    </div>
+                    
+                    <div class="card-hover bg-white p-6 rounded-xl shadow-sm">
+                        <div class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-white">👨‍🏫</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">Rahmat Hidayat, S.Pd</h3>
+                        <p class="text-orange-600 text-center mb-3">Guru Matematika</p>
+                        <p class="text-gray-600 text-sm text-center">Juara olimpiade matematika guru</p>
+                    </div>
+                    
+                    <div class="card-hover bg-white p-6 rounded-xl shadow-sm">
+                        <div class="w-20 h-20 bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-white">👩‍💼</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">Rina Marlina</h3>
+                        <p class="text-indigo-600 text-center mb-3">Tenaga Administrasi</p>
+                        <p class="text-gray-600 text-sm text-center">Mengelola administrasi sekolah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Section -->
+    <section id="galeri" class="section section-hidden">
+        <div class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Galeri Kegiatan</h2>
+                    <p class="text-gray-600">Dokumentasi kegiatan dan fasilitas sekolah</p>
+                    <div class="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card-hover bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                            <span class="text-4xl text-white">🏫</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Gedung Sekolah</h3>
+                            <p class="text-gray-600 text-sm">Gedung sekolah yang nyaman dan modern</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-hover bg-gradient-to-br from-green-100 to-green-200 rounded-xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                            <span class="text-4xl text-white">📚</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Perpustakaan</h3>
+                            <p class="text-gray-600 text-sm">Perpustakaan dengan koleksi buku lengkap</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-hover bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
+                            <span class="text-4xl text-white">⚽</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Lapangan Olahraga</h3>
+                            <p class="text-gray-600 text-sm">Fasilitas olahraga untuk aktivitas siswa</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-hover bg-gradient-to-br from-red-100 to-red-200 rounded-xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center">
+                            <span class="text-4xl text-white">🎨</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Kegiatan Seni</h3>
+                            <p class="text-gray-600 text-sm">Siswa mengembangkan bakat seni</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-hover bg-gradient-to-br from-yellow-100 to-orange-200 rounded-xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                            <span class="text-4xl text-white">🏆</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Prestasi Siswa</h3>
+                            <p class="text-gray-600 text-sm">Berbagai prestasi yang diraih siswa</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-hover bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-xl overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center">
+                            <span class="text-4xl text-white">🎓</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Upacara Wisuda</h3>
+                            <p class="text-gray-600 text-sm">Momen kelulusan siswa kelas 6</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informasi Section -->
+    <section id="informasi" class="section section-hidden">
+        <div class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Informasi Terkini</h2>
+                    <p class="text-gray-600">Berita dan pengumuman terbaru dari sekolah</p>
+                    <div class="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="card-hover bg-white p-6 rounded-xl shadow-sm">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">📢</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-2">Penerimaan Siswa Baru 2024/2025</h3>
+                                    <p class="text-gray-600 text-sm mb-3">Pendaftaran siswa baru telah dibuka. Daftar sekarang dan dapatkan pendidikan terbaik untuk anak Anda.</p>
+                                    <span class="text-blue-600 text-xs font-medium">15 Januari 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-hover bg-white p-6 rounded-xl shadow-sm">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">🏆</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-2">Juara Olimpiade Matematika</h3>
+                                    <p class="text-gray-600 text-sm mb-3">Siswa kelas 5 meraih juara 1 olimpiade matematika tingkat kabupaten. Selamat!</p>
+                                    <span class="text-green-600 text-xs font-medium">10 Januari 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-hover bg-white p-6 rounded-xl shadow-sm">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">📅</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-2">Jadwal Ujian Tengah Semester</h3>
+                                    <p class="text-gray-600 text-sm mb-3">Ujian tengah semester akan dilaksanakan mulai tanggal 20-24 Februari 2024.</p>
+                                    <span class="text-purple-600 text-xs font-medium">5 Januari 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Kalender Akademik</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                                <span class="text-gray-700">Semester Genap</span>
+                                <span class="text-blue-600 font-medium">Jan - Jun 2024</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                                <span class="text-gray-700">Ujian Tengah Semester</span>
+                                <span class="text-green-600 font-medium">20-24 Feb 2024</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                                <span class="text-gray-700">Ujian Akhir Semester</span>
+                                <span class="text-purple-600 font-medium">15-19 Mei 2024</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                                <span class="text-gray-700">Libur Semester</span>
+                                <span class="text-red-600 font-medium">Jun - Jul 2024</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3">
+                                <span class="text-gray-700">Tahun Ajaran Baru</span>
+                                <span class="text-indigo-600 font-medium">15 Jul 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" class="section section-hidden">
+        <div class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
+                    <p class="text-gray-600">Kami siap membantu dan menjawab pertanyaan Anda</p>
+                    <div class="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Informasi Kontak</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">📍</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Alamat</h4>
+                                    <p class="text-gray-600">Jl. Pendidikan No. 123, Tamansareh, Kecamatan Tamansareh, Kabupaten Bogor, Jawa Barat 16610</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">📞</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Telepon</h4>
+                                    <p class="text-gray-600">(021) 8765-4321</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">✉️</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Email</h4>
+                                    <p class="text-gray-600">info@sdntamansareh2.sch.id</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">🕒</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Jam Operasional</h4>
+                                    <p class="text-gray-600">Senin - Jumat: 07.00 - 15.00 WIB<br>Sabtu: 07.00 - 12.00 WIB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-8 rounded-xl">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Kirim Pesan</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan nama lengkap">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan email">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Subjek</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan subjek">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Pesan</label>
+                                <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tulis pesan Anda"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">Kirim Pesan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold text-lg">📚</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">UPTD SDN TAMANSAREH 2</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">Sekolah dasar negeri yang berkomitmen memberikan pendidikan berkualitas untuk generasi masa depan.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Menu Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300" onclick="showSection('beranda')">Beranda</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300" onclick="showSection('profil')">Profil</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300" onclick="showSection('gtk')">GTK</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300" onclick="showSection('galeri')">Galeri</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kontak</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>📍 Jl. Pendidikan No. 123, Tamansareh</p>
+                        <p>📞 (021) 8765-4321</p>
+                        <p>✉️ info@sdntamansareh2.sch.id</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2024 UPTD SDN Tamansareh 2. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.add('section-hidden');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionName);
+            if (targetSection) {
+                targetSection.classList.remove('section-hidden');
+                targetSection.classList.add('fade-in');
+            }
+            
+            // Update navigation active state
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                link.classList.add('text-gray-600');
+                link.classList.remove('text-gray-800');
+            });
+            
+            // Set active link
+            const activeLink = document.querySelector(`[onclick="showSection('${sectionName}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+                activeLink.classList.add('text-gray-800');
+                activeLink.classList.remove('text-gray-600');
+            }
+            
+            // Close mobile menu
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah dikirim. Kami akan segera menghubungi Anda.');
+            this.reset();
+        });
+        
+        // Smooth scrolling for internal navigation
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('a[href^="#"]')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9880823091c60fad',t:'MTc1OTM2OTQwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
